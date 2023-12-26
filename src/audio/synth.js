@@ -44,6 +44,7 @@ export class Synth {
    */
   stopAllNotes() {
     this.voices = [];
+
     return silence();
   }
 }

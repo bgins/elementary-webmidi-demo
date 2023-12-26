@@ -13,13 +13,21 @@ const synth = new Synth(noteEmitter);
 
 ui.init(getStarted);
 
+// Play note and update indicators
 noteEmitter.on("play", ({ midiNote }) => {
   engine.render(synth.playNote(midiNote));
   ui.setMIDINote(midiNote);
   ui.setFrequency(computeFrequency(midiNote));
 });
+
+// Stop note
 noteEmitter.on("stop", ({ midiNote }) => {
   engine.render(synth.stopNote(midiNote));
+});
+
+// Stop all notes
+noteEmitter.on("stopAll", () => {
+  engine.render(synth.stopAllNotes());
 });
 
 async function getStarted() {
@@ -29,8 +37,6 @@ async function getStarted() {
 }
 
 function setController(controller) {
-  console.log("Setting controller: ", controller);
-
   midi.setController(controller);
   ui.selectController(controller);
 }
