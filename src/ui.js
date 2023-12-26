@@ -37,7 +37,9 @@ export function setMIDINote(note) {
  * @returns {void}
  */
 export function setFrequency(freq) {
-  document.querySelector("#frequency").textContent = freq.toString();
+  document.querySelector("#frequency").textContent = `${freq
+    .toFixed(0)
+    .toString()} Hz`;
 }
 
 /**
