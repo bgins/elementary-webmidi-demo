@@ -2,22 +2,31 @@ import Emittery from "emittery";
 
 import "./style.css";
 import * as ui from "./ui";
+import { Engine } from "./audio/engine";
 import { Midi } from "./midi";
+import { Synth, computeFrequency } from "./audio/synth";
 
 const noteEmitter = new Emittery();
+const engine = new Engine();
 const midi = new Midi(noteEmitter);
+const synth = new Synth(noteEmitter);
 
-function getStarted() {
-  ui.getStarted();
-  midi.initialize(displayControllers);
-}
+ui.init(getStarted);
 
 noteEmitter.on("play", ({ midiNote }) => {
-  console.log("note on: ", midiNote);
+  engine.render(synth.playNote(midiNote));
+  ui.setMIDINote(midiNote);
+  ui.setFrequency(computeFrequency(midiNote));
 });
 noteEmitter.on("stop", ({ midiNote }) => {
-  console.log("note off: ", midiNote);
+  engine.render(synth.stopNote(midiNote));
 });
+
+async function getStarted() {
+  await midi.initialize(displayControllers);
+  await engine.initialize();
+  ui.getStarted();
+}
 
 function setController(controller) {
   console.log("Setting controller: ", controller);
@@ -29,7 +38,3 @@ function setController(controller) {
 function displayControllers(controllers, selectedController) {
   ui.setControllers(controllers, selectedController, setController);
 }
-
-ui.init(getStarted);
-ui.setMIDINote(2);
-ui.setFrequency(440);
