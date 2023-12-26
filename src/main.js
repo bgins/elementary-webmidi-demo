@@ -1,17 +1,25 @@
 import "./style.css";
-import * as ui from "./ui.js";
+import * as ui from "./ui";
+import { Midi } from "./midi";
 
-function setController(name) {
-  console.log("Setting controller: ", name);
-
-  ui.selectController(name);
-}
+const midi = new Midi(null);
 
 function getStarted() {
   ui.getStarted();
+  midi.initialize(displayControllers);
+}
+
+function setController(controller) {
+  console.log("Setting controller: ", controller);
+
+  midi.setController(controller);
+  ui.selectController(controller);
+}
+
+function displayControllers(controllers, selectedController) {
+  ui.setControllers(controllers, selectedController, setController);
 }
 
 ui.init(getStarted);
 ui.setMIDINote(2);
 ui.setFrequency(440);
-ui.setControllers(["Roland", "Arturia", "Korg"], "Roland", setController);
