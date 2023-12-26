@@ -30,17 +30,33 @@ noteEmitter.on("stopAll", () => {
   engine.render(synth.stopAllNotes());
 });
 
+/** Initialize WebMidi, web audio, and Elementary audio on
+ * first user interaction. Display MIDI note and frequency
+ * indicators.
+ *
+ * @returns {void}
+ */
 async function getStarted() {
   await midi.initialize(displayControllers);
   await engine.initialize();
   ui.getStarted();
 }
 
+/** Display available controllers and wire them up with
+ * set controller event handlers.
+ *
+ * @param {string[]} controllers
+ * @param {string} selectedController
+ */
+function displayControllers(controllers, selectedController) {
+  ui.setControllers(controllers, selectedController, setController);
+}
+
+/** Set the active controller.
+ *
+ * @param {string} controller The selected controller.
+ */
 function setController(controller) {
   midi.setController(controller);
   ui.selectController(controller);
-}
-
-function displayControllers(controllers, selectedController) {
-  ui.setControllers(controllers, selectedController, setController);
 }
