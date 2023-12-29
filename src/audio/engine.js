@@ -30,14 +30,14 @@ export class Engine {
     node.connect(this.context.destination);
   }
 
-  /** Render audio channel.
+  /** Render audio.
    *
-   * @param {ElemNode} channel Channel with voices to render.
+   * @param {ElemNode} node Node with voices to render.
    * @returns {void}
    */
-  render(channel) {
+  render(node) {
     if (this.context.state === "running") {
-      this.core.render(channel);
+      this.core.render(node);
     }
   }
 }
