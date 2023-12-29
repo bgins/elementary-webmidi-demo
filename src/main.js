@@ -9,7 +9,7 @@ import { Synth, computeFrequency } from "./audio/synth";
 const noteEmitter = new Emittery();
 const engine = new Engine();
 const midi = new Midi(noteEmitter);
-const synth = new Synth(noteEmitter);
+const synth = new Synth();
 
 ui.init(getStarted);
 
