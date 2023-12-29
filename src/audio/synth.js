@@ -1,4 +1,4 @@
-import { el } from "@elemaudio/core";
+import { el, ElemNode } from "@elemaudio/core";
 
 export class Synth {
   voices = [];

@@ -1,3 +1,4 @@
+import { ElemNode } from "@elemaudio/core";
 import WebRenderer from "@elemaudio/web-renderer";
 
 export class Engine {
