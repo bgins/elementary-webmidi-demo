@@ -1,4 +1,8 @@
-import { el, ElemNode } from "@elemaudio/core";
+/**
+@typedef {import('@elemaudio/core').ElemNode} ElemNode
+*/
+
+import { el } from "@elemaudio/core";
 
 export class Synth {
   voices = [];

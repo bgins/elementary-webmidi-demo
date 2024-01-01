@@ -1,4 +1,7 @@
-import { ElemNode } from "@elemaudio/core";
+/**
+@typedef {import('@elemaudio/core').ElemNode} ElemNode
+*/
+
 import WebRenderer from "@elemaudio/web-renderer";
 
 export class Engine {
