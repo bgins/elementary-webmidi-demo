@@ -1,6 +1,6 @@
 # elementary-webmidi-demo
 
-This repository demonstrates how to use Elementary Audio with the Web MIDI API in a web app. For a tour of the app, see the [forthcoming tutorial] which is also available in [TUTORIAL.md](TUTORIAL.md).
+This repository demonstrates how to use Elementary Audio with the Web MIDI API in a web app. For a tour of the app, see the [tutorial](https://www.elementary.audio/docs/tutorials/web-midi) which is also available in [TUTORIAL.md](TUTORIAL.md).
 
 ## Setup
 
